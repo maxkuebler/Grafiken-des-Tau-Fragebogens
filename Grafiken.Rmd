@@ -11,7 +11,12 @@ date: 31.12.2022
 # > render("Grafiken.Rmd", c("html_document", "pdf_document"))
 ---
 
-# Data Read
+```{r echo=FALSE}
+# Add packages you need here!
+library(knitr)
+```
+
+## Data Read
 
 ```{r}
 tau <- read.csv('tau.csv')
