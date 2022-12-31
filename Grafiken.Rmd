@@ -1,0 +1,30 @@
+---
+title: "Grafiken - Fragebogen Team Tau"
+author: "Tau Mitglieder"
+date: 31.12.2022
+output: pdf_document
+---
+
+# Data Read
+
+```{r}
+options(Encoding="UTF-8")
+tau <- read.csv('tau.csv')
+str(tau)
+```
+
+```{r}
+barplot(table(tau$Betroffenheit),
+        names.arg = c("Überhaupt nicht betroffen", "leicht betroffen",
+                      "stark betroffen"),
+        ylab = "Anzahl der Studierenden", ylim = c(0,30), las = 1,
+        main = "Wie betroffen von der Energiekrise fühlen sich die Studenten?")
+```
+
+```{r}
+barplot(table(tau$Einfluss.Studiendauer),
+        names.arg = c("stark negativ", "leicht negativ", "gar nicht",
+                      "leicht positiv", "stark positiv"),
+        ylab = "Anzahl der Studienrenden", ylim = c(0,25), las = 1,
+        main = "Wie beeinflussen wie Preissteigerungen die Studiendauer der Studenten?")
+```
