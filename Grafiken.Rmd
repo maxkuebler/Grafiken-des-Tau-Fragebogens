@@ -23,7 +23,9 @@ tau <- read.csv('tau.csv')
 str(tau)
 ```
 
-```{r}
+## Barplot bzgl. Betroffenheit und Einfluss auf Studiendauer
+
+```{r echo=FALSE}
 barplot(table(tau$Betroffenheit),
         names.arg = c("Überhaupt nicht betroffen", "leicht betroffen",
                       "stark betroffen"),
@@ -31,10 +33,26 @@ barplot(table(tau$Betroffenheit),
         main = "Wie betroffen von der Energiekrise fühlen sich die Studenten?")
 ```
 
-```{r}
+```{r echo=FALSE}
 barplot(table(tau$Einfluss.Studiendauer),
         names.arg = c("stark negativ", "leicht negativ", "gar nicht",
                       "leicht positiv", "stark positiv"),
         ylab = "Anzahl der Studienrenden", ylim = c(0,25), las = 1,
-        main = "Wie beeinflussen wie Preissteigerungen die Studiendauer der Studenten?")
+        main = "Wie beeinflussen wie Preissteigerungen die Studiendauer der Studenten?", cex.main=0.9)
 ```
+
+## Covarianz von Ausgaben
+
+```{r echo=FALSE, results='asis'}
+Ausgaben <- tau[seq(3,5)]
+kable(cov(na.omit(Ausgaben)))
+```
+
+---
+# kabel example
+# ```{r echo=FALSE, results='asis'}
+# library(knitr)
+# kable(table(tau$Betroffenheit))
+# ```
+---
+
