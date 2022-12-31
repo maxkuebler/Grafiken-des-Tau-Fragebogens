@@ -10,7 +10,6 @@ output:
 # Data Read
 
 ```{r}
-options(Encoding="UTF-8")
 tau <- read.csv('tau.csv')
 str(tau)
 ```
