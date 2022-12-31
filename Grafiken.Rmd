@@ -2,9 +2,13 @@
 title: "Grafiken - Fragebogen Team Tau"
 author: "Tau Mitglieder"
 date: 31.12.2022
-output:
-    html_document
-    # pdf_document
+---
+
+---
+# You can render it with the commands below:
+# 
+# > library(rmarkdown)
+# > render("Grafiken.Rmd", c("html_document", "pdf_document"))
 ---
 
 # Data Read
