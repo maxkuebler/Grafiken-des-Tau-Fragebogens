@@ -49,7 +49,7 @@ ausgabe <- tau[seq(3,9)]
 library(stringr)
 cnames <- colnames(ausgabe)
 cnames <- str_replace(cnames, "Ausgabe\\.", "")
-cnames <- str_replace(cnames, "\\.", "/\n")
+cnames <- str_replace(cnames, "\\.", "\n/ ")
 colnames(ausgabe) <- cnames
 ausgabe <- na.omit(ausgabe)
 rownum <- nrow(ausgabe)
@@ -75,8 +75,12 @@ axis(2, at = seq(.75,7.96, length.out = ncol(ausgabe)), labels = colnames(ausgab
 ## Covarianz von Ausgaben
 
 ```{r echo=FALSE, results='asis'}
-Ausgaben <- tau[seq(3,5)]
-kable(cov(na.omit(Ausgaben)))
+ausgabe <- tau[seq(3,9)]
+cnames <- colnames(ausgabe)
+cnames <- str_replace(cnames, "Ausgabe\\.", "")
+cnames <- str_replace(cnames, "\\.", "/")
+colnames(ausgabe) <- cnames
+kable(cov(na.omit(ausgabe)), digits=3)
 ```
 
 ---
