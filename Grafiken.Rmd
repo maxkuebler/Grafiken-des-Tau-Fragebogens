@@ -40,12 +40,17 @@ barplot(table(tau$Einfluss.Studiendauer),
         ylab = "Anzahl der Studienrenden", ylim = c(0,25), las = 1,
         main = "Wie beeinflussen wie Preissteigerungen die Studiendauer der Studenten?", cex.main=0.9)
 ```
+
+
 ## Verteilung von Veränderung der Ausgaben
 
 ```{r echo=FALSE}
 ausgabe <- tau[seq(3,9)]
-colnames(ausgabe) <- c("Miete", "Mobilität", "Lebensmittel", "Hygiene-\n& Kosmetik",
-                  "Mode", "Freizeit", "Median")
+library(stringr)
+cnames <- colnames(ausgabe)
+cnames <- str_replace(cnames, "Ausgabe\\.", "")
+cnames <- str_replace(cnames, "\\.", "/\n")
+colnames(ausgabe) <- cnames
 ausgabe <- na.omit(ausgabe)
 rownum <- nrow(ausgabe)
 for( i in seq(-2, 2) ) {
@@ -61,7 +66,7 @@ barplot(ratio,
         col = brewer.pal(5,"RdYlGn")[5:1], # Farben (richtig sortieren)
         xaxt = "n", yaxt = "n") # Achsen zunaechst nicht plotten
 # x-Achse:
-axis(1, at = seq(0,1, length.out=11), labels = c(paste(10*0:10, "%", sep ="")))
+axis(1, at = seq(0, 1, length.out=11), labels = c(paste(10*0:10, "%", sep ="")))
 # y-Achse (Namen = Variablnamen)
 axis(2, at = seq(.75,7.96, length.out = ncol(ausgabe)), labels = colnames(ausgabe))
 ```
