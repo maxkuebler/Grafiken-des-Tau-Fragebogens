@@ -47,21 +47,21 @@ ausgabe <- tau[seq(3,9)]
 colnames(ausgabe) <- c("Miete", "Mobilität", "Lebensmittel", "Hygiene-\n& Kosmetik",
                   "Mode", "Freizeit", "Median")
 ausgabe <- na.omit(ausgabe)
+rownum <- nrow(ausgabe)
 for( i in seq(-2, 2) ) {
     ausgabe <- rbind(ausgabe, rep(i, ncol(ausgabe)))
 }
 ausgabe <- ausgabe[,order(colMeans(ausgabe))] # nach Mittelwert ordnen
-library(RColorBrewer) # Paket für Farbverlauf Gruen -> Gelb -> Rot
+ratio <- (apply(ausgabe, 2, table)-1)/rownum
+
 par(cex = 0.5, las = 1, mar = c(3, 6.5, .4, 2)) # Groesse der Beschriftung, horizontale Labels
-ratio <- (apply(ausgabe, 2, table)-1)/nrow(ausgabe)
-str(ratio)
-print(sum(ratio))
+library(RColorBrewer) # Paket für Farbverlauf Gruen -> Gelb -> Rot
 barplot(ratio, 
         horiz = TRUE, # Horizontaler Barplot
         col = brewer.pal(5,"RdYlGn")[5:1], # Farben (richtig sortieren)
         xaxt = "n", yaxt = "n") # Achsen zunaechst nicht plotten
 # x-Achse:
-axis(1, at = seq(0,.857, length.out=11), labels = c(paste(10*0:10, "%", sep ="")))
+axis(1, at = seq(0,1, length.out=11), labels = c(paste(10*0:10, "%", sep ="")))
 # y-Achse (Namen = Variablnamen)
 axis(2, at = seq(.75,7.96, length.out = ncol(ausgabe)), labels = colnames(ausgabe))
 ```
