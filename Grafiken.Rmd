@@ -131,3 +131,25 @@ barplot(table(tau$Verhalten.Wasser.sparen), names.arg = c("Nein", "Ja"),
         main = "Ich spare Wasser")
 par(op)
 ```
+
+## Demografische Daten
+
+```{r echo=FALSE}
+op <- par(no.readonly = TRUE) # the whole list of settable par's.
+par(cex.main=1, cex.lab=.9, mfrow = c(2, 2), mar = c(4, 4.3, 2.3, .3)) 
+barplot(table(tau$Geschlecht),names.arg = c("divers","männlich","weiblich"),
+          main = "Geschlecht",ylab = "Anzahl der Studierenden",ylim = c(0,40) )
+  
+barplot(table(tau$Studien.abschnitt),names.arg = c("Bachelor","Master"),
+          main = "Studienabschnitt",ylab = "Anzahl der Studierenden", ylim = (c(0,40)))
+  
+hist(tau$Alter,breaks = c(18,20,22,24,26,28,30,32,34,36,38,40),main = "Altersverteilung",
+       ylim = c(0,20), ylab = "Anzahl der Studierenden",xlab = "Alter", xlim = c(18,40), xaxt = "n" )
+axis(side = 1, at=c(18,20,22,24,26,28,30,32,34,36,38,40),labels = c(18,20,22,24,26,28,30,32,34,36,38,40))
+
+hist(tau$Semester, breaks = c(0,2,4,6,8,10,12,14,16,18),main = "Semesterverteilung",
+       ylim= c(0,20),ylab = "Anzahl der Studierenden", xlab = "Semester", xlim = c(0,18), xaxt = "n", right = FALSE)
+axis(side = 1, at=c(0,2,4,6,8,10,12,14,16,18),labels = c(0,2,4,6,8,10,12,14,16,18))
+  
+par(op)
+```  
