@@ -91,3 +91,34 @@ kable(cov(na.omit(ausgabe)), digits=3)
 # ```
 ---
 
+##Änderung des Verhaltens
+
+```{r echo=FALSE}
+par(mfrow = c(3, 2), mar = c(2, 2, 3, 3)) 
+
+barplot(table(tau$Angebote), names.arg = c("Nein", "Ja"),
+        ylab = "Anzahl der Studierenden", ylim = c(0,30),
+        main = "Ich achte mehr auf Angebote")
+
+barplot(table(tau$Alternativen), names.arg = c("Nein", "Ja"),
+        ylab = "Anzahl der Studierenden", ylim= c(0,30),
+        main = "Ich nutze günstigere Alternativen")
+        
+barplot(table(tau$Anschaf.fungen), names.arg = c("Nein", "Ja"),
+        ylab = "Anzahl der Studierenden", ylim = c(0,30),
+        main = "Ich stelle weniger dringende Anschaffungen zurück")
+
+barplot(table(tau$Kochen), names.arg = c("Nein", "Ja"),
+        ylab = "Anzahl der Studierenden", ylim = c(0,30),
+        main = "Ich koche mehr selbst")
+
+barplot(table(tau$Energie.sparen), names.arg = c("Nein", "Ja"),
+        ylab = "Anzahl der Studierenden", ylim = c(0,30),
+        main = "Ich spare Energie")
+
+barplot(table(tau$Wasser.sparen), names.arg = c("Nein", "Ja"),
+        ylab = "Anzahl der Studierenden", ylim = c(0,30),
+        main = "Ich spare Wasser")
+
+dev.off
+```
